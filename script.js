@@ -113,7 +113,7 @@ function proceedToPayment(orderId) {
         else {
             const err = new Error("Payment is not valid");
             reject(err);
-        } cd < i class="fa fa-desktop" aria - hidden="true" ></i >
+        }
     });
 }
 
