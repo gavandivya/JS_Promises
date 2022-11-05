@@ -20,7 +20,7 @@
 //     console.info(showRejectedPromise);
 // }, 6000);
 
-//Task2 creating promise 
+//Task2 creating promise
 
 //Create Order
 //Proceed To Payment
@@ -44,101 +44,116 @@ cart = [{
     price: 1000
 }];
 
+
+console.info();
 // Consumer Part
 const promise = createOrder(cart);
-promise.then(function (orderId) {
-    return orderId
+promise.then(function (cart) {
+    return cart
 })
     .catch(function (err) {
         console.log(err.message)
     })
-    .finally(function () {
-        console.log("Hiee Cart")
-    })
-    .then(function (orderId) {
-        return proceedToPayment(orderId)
+    .then(function (orderDetails) {
+        return proceedToPayment(orderDetails)
     })
     .catch(function (err) {
         console.log(err.message);
     })
-    .finally(function () {
-        console.log("Hiee Payment")
-    })
-    .then(function (orderId) {
-        return showOrderSummary(orderId)
+    .then(function (paymentStatus) {
+        return showOrderSummary(paymentStatus);
     })
     .catch(function (err) {
         console.log(err.message);
     })
-    .finally(function () {
-        console.log("Hiee summary")
-    })
-    .then(function (orderId) {
-        return updateWallet(orderId)
+    .then(function (Status) {
+        return updateWallet(Status)
     })
     .catch(function (err) {
         console.log(err.message);
     })
-    .finally(function () {
-        console.log("Hiee wallet")
-    });
-
-// Producer Part
-function createOrder(cart) {
-    const prom = new Promise(function (resolve, reject) {
-        // console.info(validateCard());
-        if (validateCard()) {
-            const orderId = '12345';
-            resolve(orderId);
-        }
-        else {
-            const err = new Error("Cart is not valid");
-            reject(err);
-        }
-    });
-    // console.info(prom)
-    return prom
-}
 
 function validateCard() {
     return true
 }
 
-function proceedToPayment(orderId) {
-    return new Promise(function (resolve, reject) {
+// Producer Part
+function createOrder(cart) {
+    let orderItem = cart[0].parts;
+    let price = cart[0].price;
+
+
+    const prom = new Promise(function (resolve, reject) {
         if (validateCard()) {
-            console.info(orderId);
-            resolve(orderId);
+            resolve({
+                orderItem: orderItem,
+                amount: price
+            });
+            console.info(`Your cart has ${orderItem} and its price is ${price}`);
         }
         else {
-            const err = new Error("Payment is not valid");
+            const err = new Error("Cart is not valid");
             reject(err);
+        }
+
+    });
+
+    return prom
+}
+
+
+function proceedToPayment(orderDetails) {
+    return new Promise(function (resolve, reject) {
+        let orderId = new Date().valueOf();
+        let proceedToBuy = true;
+        if (orderDetails.orderItem && proceedToBuy) {
+            resolve({
+                paymentStatus: "Success",
+                Message: "Payment Done",
+                OrderId: orderId
+            });
+            console.info(`Your payment succeeded. Your orderID is ${orderId}`);
+        }
+        else {
+            reject({
+                Status: "Failure",
+                ErrorMessage: new Error("Payment Failed")
+            });
         }
     });
 }
 
-function showOrderSummary(orderId) {
+
+function updateWallet(payment) {
+    let balance = 22000;
     return new Promise(function (resolve, reject) {
-        if (validateCard()) {
-            resolve(orderId);
+        if (payment.Status == "Sucess") {
+            balance = balance - cart[0].price;
+            resolve(balance);
+            console.info("Wallet successfully updated. New balance is", balance);
         }
         else {
-            const err = new Error("Summary is not valid");
+            const err = new Error("Wallet Updation failed");
             reject(err);
         }
     });
+
 }
 
-function updateWallet(orderId) {
+function showOrderSummary(order) {
     return new Promise(function (resolve, reject) {
-        if (validateCard()) {
-            console.info(orderId);
-            resolve(orderId);
+        if (order.Status == "Success") {
+            resolve(obj = {
+                DeliveredBy: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000), //5 days + current date
+                Status: "Sucess"
+            });
+            console.info(`Order will be delivered by ${obj.DeliveredBy}`);
         }
         else {
-            const err = new Error("Update wallet is not valid");
-            reject(err);
+            reject(err = {
+                ErrorMessage: new Error("Order Summary is not valid"),
+                Status: "Failure"
+            });
         }
     });
-
 }
