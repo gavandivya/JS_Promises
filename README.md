@@ -79,18 +79,24 @@ Promise is an object representing eventual completion or failure of an asyncrono
 Task to be performed
 
 const showPromise = fetch("https://api.github.com/users/gavandivya");
+
 console.info(showPromise);
 
 const showRejectedPromise = fetch("https://github.com/gavandivya"); //used just for rejecting purpose
 
 showPromise.then(function () {
+
 console.info(showPromise)
 });
 
 setTimeout(function () {
+
 console.info(showPromise);
+
 }, 6000);
 
 setTimeout(function () {
+
 console.info(showRejectedPromise);
+
 }, 6000);
