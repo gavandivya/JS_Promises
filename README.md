@@ -100,3 +100,11 @@ setTimeout(function () {
 console.info(showRejectedPromise);
 
 }, 6000);
+
+
+![](https://github.com/gavandivya/JS_Promises/raw/main/promise(1).jpeg)
+![](https://github.com/gavandivya/JS_Promises/raw/main/promise(2).jpeg)
+![](https://github.com/gavandivya/JS_Promises/raw/main/promise(3).jpeg)
+![](https://github.com/gavandivya/JS_Promises/raw/main/promise(4).jpeg)
+![](https://github.com/gavandivya/JS_Promises/raw/main/promise(5).jpeg)
+
