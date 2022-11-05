@@ -44,7 +44,7 @@ API used - https://api.github.com/users/gavandivya
 
 "name": "Divya R. Gavandi",
 
-"company": "ICICI Lombard GIC",
+"company": "IL",
 
 "blog": "https://www.linkedin.com/in/divya-gavandi/",
 
