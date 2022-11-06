@@ -101,10 +101,20 @@ console.info(showRejectedPromise);
 
 }, 6000);
 
-
-![](https://github.com/gavandivya/JS_Promises/raw/main/promise(1).jpeg)
-![](https://github.com/gavandivya/JS_Promises/raw/main/promise(2).jpeg)
-![](https://github.com/gavandivya/JS_Promises/raw/main/promise(3).jpeg)
+Three States of Promises
+------------------------
 ![](https://github.com/gavandivya/JS_Promises/raw/main/promise(4).jpeg)
+
+
 ![](https://github.com/gavandivya/JS_Promises/raw/main/promise(5).jpeg)
+
+Output of all the .then() when all the promises get resolved
+------------------------------------------------------------
+![](https://github.com/gavandivya/JS_Promises/raw/main/promise(3).jpeg)
+
+
+Output of all the .catch() when all the promises get rejected
+-------------------------------------------------------------
+![](https://github.com/gavandivya/JS_Promises/raw/main/promise(1).jpeg)
+
 
