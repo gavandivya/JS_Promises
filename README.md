@@ -3,46 +3,21 @@
 
 What is a Promise?
 
-Promise is an object representing eventual completion or failure of an asyncronous operation.
+-> Promise is a placeholder that temporary holds a undefined while async task is performed once the task is completed the undefined is replaced by the result of the task.
+
+-> It is an object representing eventual completion or failure of an asyncronous operation. 
+
+-> It helps us to get rid of callback hell and gives us more control over the code, we dont need to rely on other function.
+
+-> The response of promise is immutable and it also makes the code more readable.
+
+--------------------------------------------------------------------------
+
+##  Task 1
+
+### API used - https://api.github.com/users/gavandivya
 
 ------------------------------------------------------------------------
-
-Three States of Promises
-------------------------
-const showPromise = fetch("https://api.github.com/users/gavandivya");
-
-console.info(showPromise);
-
-const showRejectedPromise = fetch("https://github.com/gavandivya"); //used just for rejecting purpose
-
-showPromise.then(function () {
-
-console.info(showPromise)
-});
-
-setTimeout(function () {
-
-console.info(showPromise);
-
-}, 6000);
-
-setTimeout(function () {
-
-console.info(showRejectedPromise);
-
-}, 6000);
-
-Output
-------------------------
-![](https://github.com/gavandivya/JS_Promises/raw/main/promise(4).jpeg)
-
-------------------------------------------------------------------------
-------------------------------------------------------------------------
-![](https://github.com/gavandivya/JS_Promises/raw/main/promise(5).jpeg)
-
-
-Task 1
-API used - https://api.github.com/users/gavandivya
 
 ### Output of API
 
@@ -112,8 +87,45 @@ API used - https://api.github.com/users/gavandivya
 "updated_at": "2022-11-03T08:39:07Z"
 }
 
+
 You can use any API from the above URL provided.
 
+------------------------
+
+## Code for Three States of Promises
+
+const showPromise = fetch("https://api.github.com/users/gavandivya");
+
+console.info(showPromise);
+
+const showRejectedPromise = fetch("https://github.com/gavandivya"); //used just for rejecting purpose
+
+showPromise.then(function () {
+
+console.info(showPromise)
+});
+
+setTimeout(function () {
+
+console.info(showPromise);
+
+}, 6000);
+
+setTimeout(function () {
+
+console.info(showRejectedPromise);
+
+}, 6000);
+
+Output
+------------------------
+![](https://github.com/gavandivya/JS_Promises/raw/main/promise(4).jpeg)
+
+------------------------------------------------------------------------
+
+![](https://github.com/gavandivya/JS_Promises/raw/main/promise(5).jpeg)
+
+------------------------------------------------------------------------
 
 Task 2 - Implementing our own promise by writing consumer and producer part
 ---------------------------------------------------------------------------------------------------------------------
@@ -121,6 +133,8 @@ Task 2 - Implementing our own promise by writing consumer and producer part
 Output of all the .then() when all the promises get resolved
 ------------------------------------------------------------
 ![](https://github.com/gavandivya/JS_Promises/raw/main/promise(3).jpeg)
+
+------------------------------------------------------------------------
 
 
 Output of all the .catch() when all the promises get rejected
